@@ -1,5 +1,6 @@
-import torch
-from micrograd.engine import Value
+import pytest
+torch = pytest.importorskip("torch") # these tests compare against PyTorch; skipped if it is not installed
+from nanograd.engine import Value
 
 def test_sanity_check():
 

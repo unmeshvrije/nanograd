@@ -4,11 +4,11 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="micrograd",
+    name="nanograd",
     version="0.1.0",
-    author="Andrej Karpathy",
-    author_email="andrej.karpathy@gmail.com",
-    description="A tiny scalar-valued autograd engine with a small PyTorch-like neural network library on top.",
+    author="Unmesh Joshi",
+    author_email="unmeshjoshiofficial@gmail.com",
+    description="An educational fork of karpathy/micrograd: a tiny scalar-valued autograd engine with a small PyTorch-like neural network library on top, plus course lessons.",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/karpathy/micrograd",

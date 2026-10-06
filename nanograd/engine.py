@@ -1,3 +1,5 @@
+import math
+
 
 class Value:
     """ stores a single scalar value and its gradient """
@@ -47,6 +49,35 @@ class Value:
 
         def _backward():
             self.grad += (out.data > 0) * out.grad
+        out._backward = _backward
+
+        return out
+
+    def exp(self):
+        out = Value(math.exp(self.data), (self,), 'exp')
+
+        def _backward():
+            self.grad += out.data * out.grad # d/dx e^x = e^x, which we already computed
+        out._backward = _backward
+
+        return out
+
+    def log(self):
+        assert self.data > 0, "log is only defined for positive values"
+        out = Value(math.log(self.data), (self,), 'log')
+
+        def _backward():
+            self.grad += (1 / self.data) * out.grad
+        out._backward = _backward
+
+        return out
+
+    def tanh(self):
+        t = math.tanh(self.data)
+        out = Value(t, (self,), 'tanh')
+
+        def _backward():
+            self.grad += (1 - t**2) * out.grad
         out._backward = _backward
 
         return out
